@@ -11,7 +11,7 @@ import com.example.roomapp.data.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class UserViewModel(application: Application): AndroidViewModel(application) {
+class UserViewModel(application: Application) : AndroidViewModel(application) {
 
     private val readAllData: LiveData<List<User>>
     private val repository: UserRepository
@@ -23,7 +23,7 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         readAllData = userDao.readAll()
     }
 
-    fun addUser(user: User){
+    fun addUser(user: User) {
         viewModelScope.launch(Dispatchers.IO) { //this code will be run in the background thread
             repository.addUser(user)
         }
